@@ -26,6 +26,11 @@ Data for Table II is produced from report_data_collection_table_ii/sweep_ntt_imp
 cd report_data_collection_table_ii
 python3 sweep_ntt_impl.py
 ~~~
+Alternatively, on Niagara simply run data_collect_batch.sh from the report_data_collection_table_ii directory.
+~~~
+cd report_data_collection_table_ii
+sbatch data_collect_batch.sh
+~~~
 As the script runs the data collection progress will be printed for each dimension of 256,512,1024,2048 for the shown variants in Table II. The results will be present as csv files corresponding to the variant names present in the first column of Table II.
 
 Collecting this data should only take a couple minutes.
@@ -36,6 +41,11 @@ Data for Figure 3 is produced from report_data_collection_figure_3/sweep_ntt_imp
 cd report_data_collection_figure_3
 python3 run_search_space.py
 python3 plot_search_space.py
+~~~
+Alternatively, on Niagara simply run data_collect_batch.sh from the report_data_collection_figure_3 directory.
+~~~
+cd report_data_collection_figure_3
+sbatch data_collect_batch.sh
 ~~~
 As the script runs the data collection progress will be printed for each dimension between 32 and 255 for the entire cross product of variants. The results will be present as csv files. While not all variants could be printed from the generated cross product in the space, the variant name for each CSV contains the data that was used to generate the subfigured of Figure 3. The figures are then created with plot_search_space.py.
 
