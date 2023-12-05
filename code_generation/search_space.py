@@ -17,7 +17,6 @@ def run_bash_cmd(bash_command):
 class Search_Space: 
     # These parameters set by running the test suite
     code_size = 0
-    code_lines = 0
     max_heap = 0
     max_stack = 0
     total_mem = 0
@@ -113,8 +112,8 @@ class Search_Space:
         output = run_bash_cmd(bash_command) 
         matches = re.findall(r"(\s+[0-9A-Fa-f]+)\:", output)
         # Get last address
-        self.code_lines = int(matches[-1], 16)
-        vp.vprint(f"Code size for {self.variant_name} is {self.code_lines}")
+        self.code_size = int(matches[-1], 16)
+        vp.vprint(f"Code size for {self.variant_name} is {self.code_size}")
 
     def set_code_size(self):
         # Check code size in B 
@@ -405,7 +404,7 @@ def prune_search_space_code_size(search_space, max_code):
         code_gen_point.generate_target()
         # search_space_point.set_code_size()
         search_space_point.set_code_lines()
-        if (search_space_point.code_lines <= max_code):
+        if (search_space_point.code_size <= max_code):
             pruned_list.append(search_space_point)
         else:
             vp.vprint(f"Attempting with -Os on {search_space_point.variant_name} before pruning")
@@ -414,7 +413,7 @@ def prune_search_space_code_size(search_space, max_code):
             search_space_point.set_build_cmd()
             # search_space_point.set_code_size()
             search_space_point.set_code_lines()
-            if (search_space_point.code_lines <= max_code):
+            if (search_space_point.code_size <= max_code):
                 vp.vprint(f"The flag -Os saved {search_space_point.variant_name} from being pruned")
             else:
                 vp.vprint(f"Pruning {search_space_point.variant_name} due to code size")
