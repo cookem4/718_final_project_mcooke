@@ -12,7 +12,11 @@ python3 generate_ntt_impl.py --dimension=<#> --verbose=<0/1> --codesize=<Max cod
 ~~~
 Example invocation:
 ~~~
-python3 generate_ntt_impl.py --dimension=129 --verbose=1 --codesize=4000 --heapsize=10000 --stacksize=20000
+python3 generate_ntt_impl.py --dimension=129 --verbose=1 --codesize=4000 --heapsize=10000 --stacksize=40000
+~~~
+OR if on Niagara, run:
+~~~
+sbatch test_run_batch.sh
 ~~~
 The target NTT implementation for the architecture that runs the generate_ntt_impl.py script is deployed to the ntt_test binary. The object files and source files are also available for custom linking and/or compilation. The source files consist of:
 1. main.c - Runs a brief test suite to assert PASS/FAIL by performing the NTT in the forward and inverse directions

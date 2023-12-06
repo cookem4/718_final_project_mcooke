@@ -1004,9 +1004,9 @@ f"""
         if self.search_space_point.is_avx2:
             avx_temp = 256
             self.avx_width_str = str(avx_temp)
-        if self.search_space_point.is_avx512:
-            avx_temp = 512
-            self.avx_width_str = str(avx_temp)
+        # if self.search_space_point.is_avx512:
+            # avx_temp = 512
+            # self.avx_width_str = str(avx_temp)
         if self.ntt_parameters.mod_prod_type == "uint8_t":
             self.avx_reg_width = int(avx_temp/8)
         elif self.ntt_parameters.mod_prod_type == "uint16_t":
