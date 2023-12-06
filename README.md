@@ -12,7 +12,7 @@ python3 generate_ntt_impl.py --dimension=<#> --verbose=<0/1> --codesize=<Max cod
 ~~~
 Example invocation:
 ~~~
-python3 generate_ntt_impl.py --dimension=129 --verbose=1 --codesize=4000 --heapsize=10000 --stacksize=40000
+python3 generate_ntt_impl.py --dimension=65 --verbose=1 --codesize=2000 --heapsize=2000 --stacksize=40000
 ~~~
 OR if on Niagara, run:
 ~~~
