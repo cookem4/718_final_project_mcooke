@@ -14,10 +14,11 @@ Example invocation:
 ~~~
 python3 generate_ntt_impl.py --dimension=65 --verbose=1 --codesize=2000 --heapsize=2000 --stacksize=40000
 ~~~
-OR if on Niagara, run:
+OR if on Niagara in batch mode, run:
 ~~~
 sbatch test_run_batch.sh
 ~~~
+HOWEVER, it has been found that there is a program fault when attempting to use valgrind on the compute notes, but NOT the login nodes. Instead of running the above on the compute nodes may just run on a login node.
 The target NTT implementation for the architecture that runs the generate_ntt_impl.py script is deployed to the ntt_test binary. The object files and source files are also available for custom linking and/or compilation. The source files consist of:
 1. main.c - Runs a brief test suite to assert PASS/FAIL by performing the NTT in the forward and inverse directions
 2. ntt_target.c/h - contains the ntt implementation for the deployed variant
@@ -35,6 +36,7 @@ Alternatively, on Niagara simply run data_collect_batch.sh from the report_data_
 cd report_data_collection_table_ii
 sbatch data_collect_batch.sh
 ~~~
+The same issue is encountered here with running valgrind on the compute node as noted above.
 As the script runs the data collection progress will be printed for each dimension of 256,512,1024,2048 for the shown variants in Table II. The results will be present as csv files corresponding to the variant names present in the first column of Table II.
 
 Collecting this data should only take a couple minutes.
@@ -51,6 +53,7 @@ Alternatively, on Niagara simply run data_collect_batch.sh from the report_data_
 cd report_data_collection_figure_3
 sbatch data_collect_batch.sh
 ~~~
+The same issue is encountered here with running valgrind on the compute node as noted above.
 As the script runs the data collection progress will be printed for each dimension between 32 and 255 for the entire cross product of variants. The results will be present as csv files. While not all variants could be printed from the generated cross product in the space, the variant name for each CSV contains the data that was used to generate the subfigured of Figure 3. The figures are then created with plot_search_space.py.
 
 As this data is much more comprehensive, collection may take a few hours.
