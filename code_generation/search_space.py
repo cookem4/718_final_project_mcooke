@@ -207,7 +207,10 @@ class Search_Space:
         if (self.is_pthread):
             self.bash_command_build += " -pthread "
         if (self.is_avx):
-            self.bash_command_build += " -mavx2 "
+            if (self.is_avx512):
+                self.bash_command_build += " -mavx512 "
+            else:
+                self.bash_command_build += " -mavx2 "
 
     def __init__(self, optimization_mode=" -O3 ", arch_dict=None, \
             type_str="TYPE_N2", is_lut=True, fixed_radix=False, \
